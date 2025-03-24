@@ -14,6 +14,7 @@ internal sealed class Subscription
         var product = await productDataLoader.LoadAsync(productId, CancellationToken.None) ??
             throw new InvalidOperationException($"Product with ID {productId} not found.");
         
+        // We never get here, because the dataloader is never dispatched
         return await receiver.SubscribeAsync<Product>("ProductPriceChanged:" + product.Id);
     }
 

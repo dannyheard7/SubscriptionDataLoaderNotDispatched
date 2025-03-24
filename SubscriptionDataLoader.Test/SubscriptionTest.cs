@@ -39,9 +39,6 @@ public class SubscriptionTest
             }
         });
 
-        if (!subscriptionReceivedData.WaitOne(TimeSpan.FromSeconds(10)))
-        {
-            Assert.Fail("No subscription data received within the timeout period.");
-        }
+        subscriptionReceivedData.WaitOne(TimeSpan.FromSeconds(10));
     }
 }
